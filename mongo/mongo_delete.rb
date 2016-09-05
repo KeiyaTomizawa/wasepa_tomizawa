@@ -1,9 +1,9 @@
+# /usr/local/bin ruby
 
-require json
-require mongo
+require 'mongo'
 
 client = Mongo::Client.new(['172.17.0.4:27017'],:database => 'wasepa')
-#db = client.database
+db = client.database
 
 
 # update document ##
@@ -17,8 +17,8 @@ coll = db.collection('Players')
 
 
 ### delete document###
-#result = coll.deleted_one({'name' => 'Keiya Tomizawa'}})
-result = coll.deleted_one({_id:ARGV[0]})
+result = coll.delete_one({'name' => 'Keiya Tomizawa'})
+#result = coll.delete_one({_id:ARGV[0]})
 
 #result = coll.update_many(dbref,{'$set' => {'name' => 'Keiya Tomizawa'}})
 

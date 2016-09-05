@@ -1,9 +1,9 @@
+# /usr/local/bin ruby
 
-require json
-require mongo
+require 'mongo'
 
 client = Mongo::Client.new(['172.17.0.4:27017'],:database => 'wasepa')
-#db = client.database
+db = client.database
 
 
 ## update document ##
@@ -14,7 +14,8 @@ client = Mongo::Client.new(['172.17.0.4:27017'],:database => 'wasepa')
 
 ### change name in my page###
 coll = db.collection('Players')
-result = coll.update_one({_id:ARGV[0],'$set' => {'name' => 'Keiya Tomizawa'}})
+#result = coll.update_one({_id:ARGV[0],'$set' => {'name' => 'Keiya Tomizawa'}})
+result = coll.update_one({'name' => 'Takuya Sugawara'},{'$set' => {'gender' => 'female'}})
 
 #result = coll.update_many(
 #{_id:ARGV[0],'$set' => {'name' => 'Keiya Tomizawa'}},
