@@ -3,6 +3,7 @@
 require 'json'
 #require 'rubygems'
 require 'mongo'
+#require 'bson'
 
 ##read json file
 ##ARGV[0]=generated_json
@@ -42,10 +43,7 @@ for i in 0..9 do
   #insert document
   #id = objectid
   #id = coll.insert_one(docs1[i])
-  id = coll.insert_many(docs1)
-#  #DBref
-#  Mongo::DBRef.new('Players',id,'wasepa')
-#  puts dbref
+  #id = coll.insert_many(docs1)
   
   ### Records collection ###
   coll2 = db.collection('Records')
@@ -53,6 +51,7 @@ for i in 0..9 do
  #docs2.push([
   docs2.push({
     'record_id' => json_data[i]['record_id'], 
+    'line_id' => json_data[i]['line_id'], 
     'record_time' => json_data[i]['record_time'], 
     'board_id' => json_data[i]['board_id'],
     'place_id' => json_data[i]['place_id'], 
@@ -63,8 +62,13 @@ for i in 0..9 do
     'temparature' => json_data[i]['temparature'],
   })
  #id2 = coll2.insert_one(docs2[i])
-  id2 = coll2.insert_many(docs2)
+ #id2 = coll2.insert_many(docs2)
 end
+id = coll.insert_many(docs1)
+#DBref
+a = Mongo::DBRef.new('Players',id,'wasepa')
+puts a.to_json
+id2 = coll2.insert_many(docs2)
 
 coll = db.collection('Board_rate')
 docs = [{'board_rate' => '0~10',},
