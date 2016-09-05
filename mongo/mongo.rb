@@ -12,19 +12,21 @@ end
 #puts json_data
 
 #connection = Mongo::Connection.new
-#client = Mongo::Client.new(['172.17.0.4:27017'],:database => 'wasepa')
-client = Mongo::Client.new(['127.0.0.1:27017'],:database => 'wasepa')
+client = Mongo::Client.new(['172.17.0.4:27017'],:database => 'wasepa')
 
 ##choice database
 #db = connection.db('wasepa')
 db = client.database
 
+docs1 = []
+docs2 = []
 for i in 0..9 do
   ### Pleyers collection ###
   ##choice collection
   coll = db.collection('Players')
   #make document
-  doc = {
+  #docs1.push([
+  docs1.push({
     'player_id' => json_data[i]['player_id'], 
     'line_id' => json_data[i]['line_id'], 
     'name' => json_data[i]['name'],
@@ -36,17 +38,20 @@ for i in 0..9 do
     'join_year' => json_data[i]['join_year'],
     'registry_status' => json_data[i]['registry_status'],
     'registry_hash' => json_data[i]['registry_hash']
-  }
+  })
   #insert document
   #id = objectid
-  id[i] = coll.insert_one(doc)
-  #DBref
-  Mongo::DBRef.new('Players',id[i],'wasepa')
-  puts dbref
+  #id = coll.insert_one(docs1[i])
+  id = coll.insert_many(docs1)
+#  #DBref
+#  Mongo::DBRef.new('Players',id,'wasepa')
+#  puts dbref
   
   ### Records collection ###
   coll2 = db.collection('Records')
-  doc2 = {
+#doc2 = {
+ #docs2.push([
+  docs2.push({
     'record_id' => json_data[i]['record_id'], 
     'record_time' => json_data[i]['record_time'], 
     'board_id' => json_data[i]['board_id'],
@@ -56,28 +61,27 @@ for i in 0..9 do
     'wind_speed' => json_data[i]['wind_speed'], 
     'weather' => json_data[i]['weather'], 
     'temparature' => json_data[i]['temparature'],
-  }
-  id2[i] = coll2.insert_one(doc2)
+  })
+ #id2 = coll2.insert_one(docs2[i])
+  id2 = coll2.insert_many(docs2)
 end
 
 coll = db.collection('Board_rate')
-doc = {
-  'board_rate' => '0~10', 
-  'board_rate' => '11~20', 
-  'board_rate' => '21~30',
-}
+docs = [{'board_rate' => '0~10',},
+        {'board_rate' => '11~20',}, 
+        {'board_rate' => '21~30',}]
+id = coll.insert_many(docs)
 
 coll = db.collection('Place_information')
-doc = {
-  'place_name' => '相模川', 
-  'place_name' => '三崎口',
-} 
+docs = [{'place_name' => ''},
+        {'place_name' => ''}]
+id = coll.insert_many(docs)
+
 coll = db.collection('Distance_info')
-doc = {
-  'distance' => '3', 
-  'distance' => '6', 
-  'distance' => '9', 
-}
+docs = [{'distance' => '3',}, 
+        {'distance' => '6',}, 
+        {'distance' => '9',}] 
+id = coll.insert_many(docs)
 #for json
 #kousinn
 #sakujyo
