@@ -1,0 +1,24 @@
+[
+  {
+    "player_id": "57aac71a30c1df53046e00d5",
+    "line_id": "57aac71a14ab04ac70b1e2e8",
+    "name": "Glenn Armstrong",
+    "gender": "male",
+    "hp_permission": false,
+    "ranking_permission": true,
+    "image": "http://placehold.it/32x32",
+    "comment": "Magna nulla amet ad excepteur elit culpa voluptate consequat.",
+    "join_year": 4,
+    "registry_status": false,
+    "registry_hash": "57aac71aa9f2eea4d7e75f07",
+    "record_id": "57aac71ac0931af6a90180c3",
+    "record_time": "15:33:50",
+    "board_id": 3,
+    "place_id": 2,
+    "distance_id": 1,
+    "datetime": "2016-08-20 09:17:59",
+    "wind_speed": 95.22,
+    "weather": "Rain",
+    "temparature": -5.6
+  }
+]
