@@ -1,0 +1,30 @@
+[
+   '{{repeat(10)}}',
+   {
+      player_id: '{{objectId()}}',
+      line_id: '{{objectId()}}',
+      name: '{{firstName()}} {{surname()}}',
+      gender: '{{random("’j«","—«")}}',
+      hp_permission: '{{bool()}}',
+      ranking_permission: '{{bool()}}',
+      image: 'http://placehold.it/32x32',
+      comment: '{{lorem(1, "sentences")}}',
+      join_year: '{{integer(0, 100)}}',
+      registry_status: '{{bool()}}',
+      registry_hash: '{{objectId()}}',
+      records:[
+      '{{repeat(10)}}',
+       {
+        record_id: '{{objectId()}}',
+        record_time: '{{date(new Date(00, 00, 00), new Date(05,60,60), "HH:mm:ss")}}',
+        board: '{{random("0~10","11~20", "21~30")}}',
+        place: '{{random("‘Š–Íì","OèŒû")}}',
+        distance: '{{random("3","6","9")}}',
+        datetime: '{{date(new Date(2016, 8, 10), new Date(), "YYYY-MM-dd HH:mm:ss")}}',
+        wind_speed: '{{floating(0, 100, 2, "0.00")}}',
+        weather: '{{random("Sunny", "Cloud", "Rain")}}',
+        temparature: '{{floating(-10, 43, 1, "00.0")}}'
+       }
+       ]
+    }
+]
