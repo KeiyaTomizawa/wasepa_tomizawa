@@ -43,9 +43,9 @@ for i in 0..9 do
         [{
         'record_id' => json_data[i]['records'][j]['record_id'], 
         'record_time' => json_data[i]['records'][j]['record_time'], 
-        'board_id' => json_data[i]['records'][j]['board_id'],
-        'place_id' => json_data[i]['records'][j]['place_id'], 
-        'distance_id' => json_data[i]['records'][j]['distance_id'], 
+        'board' => json_data[i]['records'][j]['board'],
+        'place' => json_data[i]['records'][j]['place'], 
+        'distance' => json_data[i]['records'][j]['distance'], 
         'datetime' => json_data[i]['records'][j]['datetime'],
         'wind_speed' => json_data[i]['records'][j]['wind_speed'], 
         'weather' => json_data[i]['records'][j]['weather'], 
